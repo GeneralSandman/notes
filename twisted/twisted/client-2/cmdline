@@ -1,0 +1,5 @@
+python2 server-2.py --port 10000 ../poetry/ecstasy.txt --num-bytes 30
+python2 server-2.py --port 10001 ../poetry/fascination.txt
+python2 server-2.py --port 10002 ../poetry/science.txt
+
+python2 client-2.py 10000 10001 10002
