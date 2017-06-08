@@ -29,3 +29,14 @@
 ### 14.ExecutionEngine在open_spider里会调用scraper的open_spider方法来初始化scraper
 
 ### 15.引擎里会通过不断执行’_next_request'方法来处理新的请求，其中又会在不需要backout时调用'_next_request_from_scheduler'来处理新请求
+
+### 16.网络蜘蛛中间件管理器的scrape_response方法,这个方法首先依次调用中间件的'process_spider_input'方法，然后调用传递进来的scrap_func，也就是call_spider方法，如果某个中间件的'process_spider_input'方法抛出了异常，则以Failure调用call_spider方法。如果所有中间件都处理成功，且call_spider也返回成功，则调用'process_spider_output'方法，这个方法依次调用中间件的'process_spider_output'方法
+
+### 17.Downloader _download方法首先将request加入slot的inprogress集合记录正在进行的request,然后调用下载器downloader的fetch方法，给fetch返回的deferred添加一个'_on_success'方法，这样在下载完成后会打印日志并发送一个response_received消息给关心者。
+
+### 18.对于同一个域名的访问策略可以通过slots获取而不用每次都解析配置。根据key从slots里取对应的Slot对象，如果还没有，则构造一个新的对象.
+
+### 19.Downloader的fetch函数调用中间件管理器的download方法，同时传入了自己的_enqueue_request方法。
+
+
+### 17.downloer中的slotSlot对象的字典，key是request对应的域名，值是一个Slot对象.lot对象用来控制一种Request下载请求，通常这种下载请求是对于同一个域名。这个Slot对象还控制了访问这个域名的并发度，下载延迟控制，随机延时等，主要是为了控制对一个域名的访问策略，一定程度上避免流量过大被封IP，不能继续爬取。

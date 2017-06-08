@@ -23,8 +23,8 @@ forwarded 转发
 rudimentary 基本的
 arranging 安排
 embedded嵌入的
-
-
+substituted
+detect
 
 
 
