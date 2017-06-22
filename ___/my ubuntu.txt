@@ -1,0 +1,26 @@
+1.搜狗输入法安装
+	http://jingyan.baidu.com/article/08b6a591cb06f114a8092209.html
+2.安装gitkraken
+
+3.安装chrom
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+
+
+https://laod.cn/hosts/2016-google-hosts.html
+
+安装Ubuntu要做的事
+	http://blog.csdn.net/skykingf/article/details/45267517/
+美化
+	http://blog.csdn.net/terence1212/article/details/52270210
+
+迅雷下载链接
+	http://www.linuxidc.com/Linux/2016-10/135901.htm
+
+安装smplayer
+	http://www.linuxidc.com/Linux/2016-05/131375.htm
+
+
+搜狗输入法打不开
+	cd /home/li/.config
+	rm -rf SogouPY.users/ SogouPY sogou-qimpanel/
