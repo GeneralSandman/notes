@@ -25,6 +25,8 @@ arranging 安排
 embedded嵌入的
 substituted
 detect
+infinite无限的
+
 
 
 
