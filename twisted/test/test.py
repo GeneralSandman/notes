@@ -341,6 +341,8 @@ def testPrint(key, a):
 
 
 _loopCounter = 0
+
+
 def testTask():
     from twisted.internet import task
     from twisted.internet import reactor
@@ -392,5 +394,14 @@ def testTask():
     reactor.run()
 
 
+def callback(str):
+    print str
+
+
 if __name__ == "__main__":
-    testTask()
+    from twisted.internet import defer
+
+    d = defer.Deferred()
+    d.addCallback(callback)
+
+    d.callback("aaa")

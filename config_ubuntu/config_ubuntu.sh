@@ -145,6 +145,10 @@ installSoftWare fcitx libssh2-1
 installDeb sougou_64.deb
 
 
+sudo apt-get install mysql-server
+sudo apt-get install mysql-client
+
+
 
 
 

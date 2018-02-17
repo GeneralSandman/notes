@@ -1,43 +1,63 @@
 #include <iostream>
 #include <string>
 #include <execinfo.h>
+#include <memory>
+#include <vector>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 using namespace std;
 
-class Basic
-{
-  protected:
-    virtual void m_fF1(void)
-    {
-    }
-    virtual void m_fF2(void)
-    {
-    }
-    virtual void m_fF3(void)
-    {
-    }
+int constructor = 0;
+int destructor = 0;
 
-  public:
-    void f1() { m_fF1(); }
-    void f2() { m_fF3(); }
-    void f3() { m_fF3(); }
-};
-
-class Drive : public Basic
+class A
 {
-  protected:
-    virtual void m_fF1(void)
-    {
-    }
-    virtual void m_fF2(void)
-    {
-    }
-    virtual void m_fF3(void)
-    {
-    }
+public:
+  A()
+  {
+    constructor++;
+    std::cout << "constructor\n";
+  }
+  A(const A &a)
+  {
+    constructor++;
+    std::cout << "constructor\n";
+  }
+  A &operator=(const A &a)
+  {
+    if (this == &a)
+      return *this;
+    constructor++;
+    std::cout << "constructor\n";
+    return *this;
+  }
+  ~A()
+  {
+    destructor++;
+    cout << "destructor\n";
+  }
 };
 
 int main()
 {
-    return 0;
+  {
+    boost::ptr_vector<string> vect;
+    vect.reserve(50);
+    int tmp = vect.capacity();
+    for (int i = 0; i < 50; i++)
+    {
+      string *a = new string("li");
+      vect.push_back(a);
+
+      if (vect.capacity() != tmp)
+      {
+        std::cout << vect.capacity() << endl;
+        tmp = vect.capacity();
+      }
+    }
+  }
+
+  cout << constructor << endl;
+  cout << destructor << endl;
+  return 0;
 }
