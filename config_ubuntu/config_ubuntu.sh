@@ -114,6 +114,11 @@ installTLP(){
 }
 
 
+#install zsh  https://zhuanlan.zhihu.com/p/27052046
+sudo apt-get install zsh
+zsh --version
+sudo chsh -s $(which zsh)
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
 
 

@@ -16,10 +16,11 @@ gdb a
 |回车|重复上一次命令|
 |b|设置断点|
 |r|运行|
-|n|单条语句执行|
+|n|单条语句执行,不进入函数|
 |c|继续运行至下一断点|
 |p|打印变量|
 |bt|查看函数堆栈|
+|s|step,进入函数|
 |finish|退出函数|
 
 
@@ -52,7 +53,7 @@ gdb <program> <PID>
     -s <file> 
     从指定文件中读取符号表。
 
-    -se file 
+    -se file
     从指定文件中读取符号表信息，并把他用在可执行文件中。
 
     -core <file>
@@ -62,6 +63,30 @@ gdb <program> <PID>
     -directory <directory>
     -d <directory>
 ```
+
+9.如何调用一个函数```func```
+
+```
+call func()
+或
+print func()
+```
+
+10.退出正在调试的函数
+
+```
+finish
+```
+
+11.打印堆栈信息
+
+```backtrace``` 简称 ```bt```
+
+```info frame```
+
+
+
+
 
 ---
 > ### 1.多线程调试
